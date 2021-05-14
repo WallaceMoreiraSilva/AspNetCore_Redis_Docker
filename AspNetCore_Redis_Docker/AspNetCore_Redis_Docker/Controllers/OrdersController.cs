@@ -1,4 +1,5 @@
-﻿using AspNetCore_Redis_Docker.Models;
+﻿using AspNetCore_Redis_Docker.Data;
+using AspNetCore_Redis_Docker.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
@@ -15,9 +16,9 @@ namespace AspNetCore_Redis_Docker.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly IDistributedCache distributedCache;
-        private readonly NorthwindContext context;
+        private readonly ContextBase context;
 
-        public OrdersController(NorthwindContext context, IDistributedCache distributedCache)
+        public OrdersController(ContextBase context, IDistributedCache distributedCache)
         {
             this.context = context;
             this.distributedCache = distributedCache;
@@ -26,7 +27,7 @@ namespace AspNetCore_Redis_Docker.Controllers
         [HttpGet("normal")]
         public async Task<IActionResult> GetAllOrders()
         {
-            var orderList = await context.Orders.ToListAsync();
+            var orderList = await context.Paises.ToListAsync();
             return Ok(orderList);
         }
 
@@ -35,18 +36,18 @@ namespace AspNetCore_Redis_Docker.Controllers
         {
             var cacheKey = "orderList";
             string serializedOrderList;
-            var orderList = new List<Order>();
+            var orderList = new List<Pais>();
 
             var redisOrderList = await distributedCache.GetAsync(cacheKey);
 
             if (redisOrderList != null)
             {
                 serializedOrderList = Encoding.UTF8.GetString(redisOrderList);
-                orderList = JsonConvert.DeserializeObject<List<Order>>(serializedOrderList);
+                orderList = JsonConvert.DeserializeObject<List<Pais>>(serializedOrderList);
             }
             else
             {
-                orderList = await context.Orders.ToListAsync();
+                orderList = await context.Paises.ToListAsync();
 
                 serializedOrderList = JsonConvert.SerializeObject(orderList);
 

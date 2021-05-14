@@ -1,4 +1,4 @@
-using AspNetCore_Redis_Docker.Models;
+using AspNetCore_Redis_Docker.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +20,7 @@ namespace AspNetCore_Redis_Docker
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<NorthwindContext>(options =>
+            services.AddDbContext<ContextBase>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddStackExchangeRedisCache(options =>
