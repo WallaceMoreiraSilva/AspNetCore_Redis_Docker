@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore_Redis_Docker", "AspNetCore_Redis_Docker\AspNetCore_Redis_Docker.csproj", "{ED6DB8E4-2800-4041-9DFD-26C24A6688BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED6DB8E4-2800-4041-9DFD-26C24A6688BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED6DB8E4-2800-4041-9DFD-26C24A6688BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED6DB8E4-2800-4041-9DFD-26C24A6688BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED6DB8E4-2800-4041-9DFD-26C24A6688BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98BCF7CB-956B-416F-BA0E-DB63D0D60DD6}
+	EndGlobalSection
+EndGlobal
